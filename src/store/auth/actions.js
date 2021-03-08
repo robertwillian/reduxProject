@@ -9,10 +9,10 @@ export const actionAuthRequest = (data) => ({
 })
 
 export const actionAuthSuccess = (data) => ({
-    type: authRequest,
+    type: authSuccess,
     data: data
 })
 
 export const actionAuthFailure = () => ({
-    type: authRequest
+    type: authFailure
 })

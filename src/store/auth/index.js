@@ -28,11 +28,15 @@ const reducer = (state = auth_state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: true
+                error: true,
+                data: {
+                    token: null,
+                    name: null
+                }
             }
     
         default:
-            break;
+            return state;
     }
 }
 

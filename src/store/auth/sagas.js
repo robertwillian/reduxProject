@@ -1,5 +1,5 @@
 import { takeLatest, all, put } from 'redux-saga/effects'
-import { authFailure, authRequest, authSuccess } from './actions';
+import { actionAuthFailure, actionAuthSuccess, authRequest } from './actions';
 import { authRequestService } from './services';
 
 
@@ -9,7 +9,11 @@ function* sagaRequestAuth(action) {
     
     yield authRequestService(action.data)
     .then(result=> {
-        data = result.data;
+        console.log(result.data);
+        data = {
+            token: result.data.token,
+            name: result.data.user.name
+        };
     })
     .catch(erro => {
         error = true
@@ -17,10 +21,10 @@ function* sagaRequestAuth(action) {
 
 
     if(error !== false) {
-        yield put(authFailure());
+        yield put(actionAuthFailure());
     }
     if(data !== false) {
-        yield put(authSuccess(data));
+        yield put(actionAuthSuccess(data));
     }
 }
 
