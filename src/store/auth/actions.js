@@ -13,7 +13,6 @@ export const actionAuthSuccess = (data) => ({
     data: data
 })
 
-export const actionAuthFailure = (data) => ({
-    type: authRequest,
-    data: data
+export const actionAuthFailure = () => ({
+    type: authRequest
 })
